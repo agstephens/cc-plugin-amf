@@ -32,9 +32,12 @@ setup(name                 = "cc-plugin-amf",
         ],
     entry_points         = {
         'compliance_checker.suites': [
+            'amf-common-variables = cc_plugin_amf.amf_common_variables:AMFCommonVariablesCheck',
             'amf-file-info = cc_plugin_amf.amf_file_info:AMFFileInfoCheck',
-            'amf-global-attrs = cc_plugin_amf.amf_global_attrs:AMFGlobalAttrsCheck',
-            'amf-common-variables = cc_plugin_amf.amf_common_variables:AMFCommonVariablesCheck'
+            'amf-global-attrs-common = cc_plugin_amf.amf_global_attrs_common:AMFGlobalAttrsCommonCheck',
+            'amf-global-attrs-mobile-aircraft = cc_plugin_amf.amf_global_attrs_mobile_aircraft:AMFGlobalAttrsMobileAircraftCheck',
+            'amf-global-attrs-mobile-ship = cc_plugin_amf.amf_global_attrs_mobile_ship:AMFGlobalAttrsMobileShipCheck',
+            'amf-global-attrs-stationary = cc_plugin_amf.amf_global_attrs_stationary:AMFGlobalAttrsStationaryCheck'
         ]
     }
 )
