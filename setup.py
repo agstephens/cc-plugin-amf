@@ -33,8 +33,8 @@ setup(name                 = "cc-plugin-amf",
     entry_points         = {
         'compliance_checker.suites': [
             'amf-file-info = cc_plugin_amf.amf_file_info:AMFFileInfoCheck',
-            'amf-file-structure = cc_plugin_amf.amf_file_structure:AMFFileStructureCheck',
-            'amf-global-attrs = cc_plugin_amf.amf_global_attrs:AMFGlobalAttrsCheck'
+            'amf-global-attrs = cc_plugin_amf.amf_global_attrs:AMFGlobalAttrsCheck',
+            'amf-common-variables = cc_plugin_amf.amf_common_variables:AMFCommonVariablesCheck'
         ]
     }
 )

@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 """
-cc_plugin_ukcp18.ukcp18_file_info
+cc_plugin_amf.amf_file_info
 
-Compliance Test Suite: Check file names and external information about UKCP18 files
+Compliance Test Suite: Check file names and external information about AMF files
 """
 
 import os
@@ -12,14 +12,14 @@ from netCDF4 import Dataset
 from compliance_checker.base import Result, GenericFile
 
 # Restrict which vocabs will load (for efficiency)
-os.environ["ESSV_VOCABS_ACTIVE"] = "ukcp"
+os.environ["ESSV_VOCABS_ACTIVE"] = "ncas"
 
 # Import checklib
 import checklib.register.file_checks_register as check_package
 
-class UKCP18FileInfoCheck(object):
+class AMFFileInfoCheck(object):
     register_checker = True
-    name = 'ukcp18-file-info'
+    name = 'amf-file-info'
     supported_ds = [GenericFile, Dataset]
 
 

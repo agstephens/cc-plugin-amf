@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 """
-cc_plugin_ukcp18.ukcp18_global_attrs
+cc_plugin_amf.amf_global_attrs
 
-Compliance Test Suite: Check core global attributes in UKCP18 files
+Compliance Test Suite: Check core global attributes in AMF files
 """
 
 import os
@@ -12,15 +12,15 @@ from netCDF4 import Dataset
 from compliance_checker.base import Result, BaseNCCheck
 
 # Restrict which vocabs will load (for efficiency)
-os.environ["ESSV_VOCABS_ACTIVE"] = "ukcp"
+os.environ["ESSV_VOCABS_ACTIVE"] = "ncas"
 
 # Import checklib
 import checklib.register.nc_file_checks_register as check_package
 
 
-class UKCP18GlobalAttrsCheck(BaseNCCheck):
+class AMFGlobalAttrsCheck(BaseNCCheck):
     register_checker = True
-    name = 'ukcp18-global-attrs'
+    name = 'amf-global-attrs'
 
 
     def setup(self, ds):
@@ -30,7 +30,7 @@ class UKCP18GlobalAttrsCheck(BaseNCCheck):
     def check_cr01(self, ds):
         return check_package.ValidGlobalAttrsMatchFileNameCheck(kwargs={'delimiter': '_', 'order': 'institution_id,realm,frequency', 'extension': '.nc'},
                                                     level="HIGH",
-                                                    vocabulary_ref="ukcp:ukcp18")(ds)
+                                                    vocabulary_ref="ncas:amf")(ds)
     
     def check_cr02(self, ds):
         return check_package.GlobalAttrRegexCheck(kwargs={'regex': 'CF-1\\.6', 'attribute': 'Conventions'},
@@ -43,7 +43,7 @@ class UKCP18GlobalAttrsCheck(BaseNCCheck):
                                                     vocabulary_ref="")(ds)
     
     def check_cr04(self, ds):
-        return check_package.GlobalAttrRegexCheck(kwargs={'regex': 'UKCP18', 'attribute': 'project_id'},
+        return check_package.GlobalAttrRegexCheck(kwargs={'regex': 'AMF', 'attribute': 'project_id'},
                                                     level="HIGH",
                                                     vocabulary_ref="")(ds)
     
@@ -90,17 +90,17 @@ class UKCP18GlobalAttrsCheck(BaseNCCheck):
     def check_cr13(self, ds):
         return check_package.GlobalAttrVocabCheck(kwargs={'attribute': 'frequency', 'vocab_lookup': 'canonical_name'},
                                                     level="HIGH",
-                                                    vocabulary_ref="ukcp:ukcp18")(ds)
+                                                    vocabulary_ref="ncas:amf")(ds)
     
     def check_cr14(self, ds):
         return check_package.GlobalAttrVocabCheck(kwargs={'attribute': 'institution_id', 'vocab_lookup': 'canonical_name'},
                                                     level="HIGH",
-                                                    vocabulary_ref="ukcp:ukcp18")(ds)
+                                                    vocabulary_ref="ncas:amf")(ds)
     
     def check_cr15(self, ds):
         return check_package.GlobalAttrVocabCheck(kwargs={'attribute': 'institution', 'vocab_lookup': 'description'},
                                                     level="HIGH",
-                                                    vocabulary_ref="ukcp:ukcp18")(ds)
+                                                    vocabulary_ref="ncas:amf")(ds)
     
     def check_cr16(self, ds):
         return check_package.GlobalAttrRegexCheck(kwargs={'regex': '\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}.*', 'attribute': 'creation_date'},
